@@ -1,0 +1,277 @@
+<div class="group">
+  <div class="rca-information" id="rca-information-id">
+    <app-group></app-group>
+  </div>
+
+  <div class="rca-statusbar" id="rca-statusbar-id">
+    <div
+      class="rca-creation-progress-completed"
+      id="rca-creation-progress-completed-id"
+    >
+      <mat-label class="RCA-Creation-label1"
+        >RCA Creation
+        <div class="mat-timelapse1">
+          <mat-icon
+            class="timelapse-1"
+            *ngIf="!matIconProgress; else elseBlock1"
+            >timelapse</mat-icon
+          >
+        </div>
+      </mat-label>
+      <ng-template hidden #elseBlock1>
+        <div class="mat-done">
+          <mat-icon class="done-1">done</mat-icon>
+        </div>
+      </ng-template>
+
+      <mat-label class="RCA-in-Progress-label2"
+        >RCA in Progress
+        <div hidden class="mat-timelapse1">
+          <mat-icon
+            class="timelapse-1"
+            *ngIf="!matIconProgress; else elseBlock2"
+            >timelapse</mat-icon
+          >
+        </div>
+      </mat-label>
+      <ng-template #elseBlock2>
+        <div hidden class="mat-done">
+          <mat-icon hidden class="done-1">done</mat-icon>
+        </div>
+      </ng-template>
+
+      <mat-label class="RCA-Complete-label3"
+        >RCA Complete
+        <div hidden class="mat-timelapse1">
+          <mat-icon
+            hidden
+            class="timelapse-1"
+            *ngIf="!matIconProgress; else elseBlock3"
+            >timelapse
+          </mat-icon>
+        </div>
+      </mat-label>
+      <ng-template #elseBlock3>
+        <div hidden class="mat-done">
+          <mat-icon hidden class="done-1">done</mat-icon>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="progress-bar">
+      <mat-progress-bar
+        class="progressbar-material1"
+        mode="determinate"
+        value="{{ stsval }}"
+      ></mat-progress-bar>
+
+      <mat-progress-bar
+        class="progressbar-material2"
+        mode="determinate"
+        value="0"
+      ></mat-progress-bar>
+
+      <mat-progress-bar
+        class="progressbar-material3"
+        mode="determinate"
+        value="0"
+      ></mat-progress-bar>
+    </div>
+
+    <div class="sub-navigation">
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step
+          [stepControl]="firstFormGroup"
+          [completed]="defineCompleted"
+          [editable]="defineEditable"
+        >
+          <ng-template class="stepper" matStepLabel>Define</ng-template>
+          <app-rca-form></app-rca-form>
+          <div style="text-align: end">
+            <button
+              style="background: #02a783"
+              class="saveBtn btnColor"
+              (click)="defineNext()"
+              mat-button
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </mat-step>
+
+        <mat-step
+          [stepControl]="secondFormGroup"
+          label="Team"
+          [completed]="teamCompleted"
+          [editable]="teamEditable"
+        >
+          <div>
+            <app-team-table></app-team-table>
+            <div class="stepper-button-flex">
+              <button mat-button matStepperPrevious (click)="TeamBack()">
+                Back
+              </button>
+              <button
+                style="background: #02a783"
+                class="btnColor"
+                mat-button
+                matStepperNext
+                (click)="TeamNext()"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+          <!-- </form> -->
+        </mat-step>
+
+        <mat-step
+          [stepControl]="thirdFormGroup"
+          label="Related Assets"
+          [completed]="relatedAssestCompleted"
+          [editable]="relatedAssestEditable"
+        >
+          <div>
+            <app-asset-table></app-asset-table>
+            <div class="stepper-button-flex">
+              <button mat-button matStepperPrevious (click)="TeamBack()">
+                Back
+              </button>
+              <button
+                style="background: #02a783"
+                class="btnColor"
+                mat-button
+                matStepperNext
+                (click)="RelatedAssetsNext()"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+          <!-- </form> -->
+        </mat-step>
+
+        <!-- <mat-step [stepControl]="secondFormGroup" label="Logic Tree" [completed]="logicTreeCompleted"
+          [editable]="logicTreeEditable">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field appearance="fill">
+              <mat-label>Logic Tree</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext [disabled]="true">Next</button>
+              <button mat-button (click)="stepper.reset()" (click)="resetProgressBarValue()">
+                Create New RCA
+              </button>
+            </div>
+          </form>
+        </mat-step> -->
+
+        <mat-step
+          [stepControl]="secondFormGroup"
+          label="Logic Tree"
+          [completed]="logicTreeCompleted"
+          [editable]="logicTreeEditable"
+        >
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field appearance="fill">
+              <mat-label>Logic Tree</mat-label>
+              <input
+                matInput
+                formControlName="secondCtrl"
+                placeholder="Ex. 1 Main St, New York, NY"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious (click)="logicTreeBack()">
+                Back
+              </button>
+              <button
+                style="background: #02a783"
+                class="saveBtn btnColor"
+                mat-button
+                matStepperNext
+                [disabled]="true"
+              >
+                Next
+              </button>
+              <button
+                style="background: #02a783"
+                class="saveBtn btnColor"
+                mat-button
+                (click)="stepper.reset()"
+                (click)="resetProgressBarValue()"
+              >
+                Create New RCA
+              </button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step
+          aria-disabled="true"
+          [stepControl]="secondFormGroup"
+          label="Evidence Collection"
+          [completed]="logicTreeCompleted"
+          [editable]="false"
+        >
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field appearance="fill">
+              <mat-label>Evidence Collection</mat-label>
+              <input
+                matInput
+                formControlName="secondCtrl"
+                placeholder="Ex. 1 Main St, New York, NY"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step
+          aria-disabled="true"
+          [stepControl]="secondFormGroup"
+          label="Recommendation"
+          [completed]="logicTreeCompleted"
+          [editable]="false"
+        >
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field appearance="fill">
+              <mat-label>Recommendation</mat-label>
+              <input
+                matInput
+                formControlName="secondCtrl"
+                placeholder="Ex. 1 Main St, New York, NY"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step
+          aria-disabled="true"
+          [completed]="logicTreeCompleted"
+          [editable]="false"
+        >
+          <ng-template matStepLabel>Summary</ng-template>
+          <p>Summary</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </div>
+</div>

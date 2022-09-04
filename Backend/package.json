@@ -1,0 +1,27 @@
+{
+  "name": "rca_project_teams",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bh-ent-tech/bh-logger-adapter": "^2.0.0",
+    "@bh-ent-tech/bh-ss-node-adapter": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^12.0.0",
+    "express": "^4.18.1",
+    "knex": "^2.2.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.7.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

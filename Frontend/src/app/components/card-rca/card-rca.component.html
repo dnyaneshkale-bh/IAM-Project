@@ -1,0 +1,44 @@
+<mat-card class="card" role="button" id="action1" (click)="editRCA()">
+  <div class="id">
+    <!-- <div class="id-container"> -->
+    <div class="id-text">ID:</div>
+    <div class="id-number">{{ hero.rca_id | slice: 0:6 }}</div>
+  </div>
+  <!-- </div> -->
+  <div class="title">
+    <div class="title-container">
+      <div class="title-name">{{ hero.rca_name }}</div>
+    </div>
+  </div>
+  <div class="subtitle">
+    <div class="subtitle-img">
+      <img src="assets/img/asset_hierarchy.png" alt="" />
+    </div>
+    <div class="subtitle-name">{{ hero.facility_name }}</div>
+  </div>
+  <div class="simple-container">
+    <div class="simple-group">
+      <div class="locked"></div>
+      <div class="alert"></div>
+    </div>
+  </div>
+  <div class="tag">
+    <div class="tag-container">
+      <div class="tag-curve">
+        <div class="tag-name">{{ hero.severity }}</div>
+      </div>
+      <div class="tag-curve2">
+        <button
+          class="tag-name tag-curve2"
+          role="button"
+          id="action"
+          (click)="openDialog('0ms', '0ms')"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<!-- <h1>{{hero.id_number}}</h1> -->

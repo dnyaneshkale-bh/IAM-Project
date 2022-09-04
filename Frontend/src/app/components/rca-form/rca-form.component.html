@@ -1,0 +1,193 @@
+<div class="container">
+  <div class="menu-item1">
+    <form [formGroup]="firstFormGroup">
+      <div class="scroll-wheel">
+        <div class="define-flex">
+          <div class="mat-field">
+            <ng-template matStepLabel>Define</ng-template>
+            <mat-label>Facility Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="facilityName"
+                placeholder="Facility Name"
+              />
+            </mat-form-field>
+          </div>
+          <div class="mat-field">
+            <ng-template matStepLabel>Define</ng-template>
+            <mat-label>Severity</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="severity" placeholder="select">
+                <mat-option>None</mat-option>
+                <mat-option
+                  *ngFor="let severity of severities"
+                  [value]="severity"
+                  >{{ severity }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="mat-field">
+            <ng-template matStepLabel>Define</ng-template>
+            <mat-label>Creation Date</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="creationDate"
+                placeholder="MM/DD/YYYY"
+                [matDatepicker]="picker"
+              />
+
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="mat-field">
+            <ng-template matStepLabel>Define</ng-template>
+            <mat-label>Target Date</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="MM/DD/YYYY"
+                formControlName="targetDate"
+                [matDatepicker]="picker1"
+              />
+
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="desc-flex">
+          <div>
+            <mat-label>Problem description</mat-label>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <textarea
+                matInput
+                formControlName="problemDescription"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-label>Safety impact</mat-label>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <textarea
+                matInput
+                formControlName="safetyImpact"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+          <div class="example-full-width">
+            <mat-label>Enviornment impact</mat-label>
+
+            <mat-form-field appearance="outline">
+              <textarea
+                matInput
+                formControlName="enviornmentImpact"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+          <div class="example-full-width">
+            <mat-label>Revenue impact</mat-label>
+
+            <mat-form-field appearance="outline">
+              <textarea
+                matInput
+                formControlName="revenueImpact"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+          <div class="example-full-width">
+            <mat-label>Reputation impact</mat-label>
+
+            <mat-form-field appearance="outline">
+              <textarea
+                matInput
+                formControlName="reputationImpact"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+          <div class="example-full-width">
+            <mat-label>Asset Impact</mat-label>
+
+            <mat-form-field appearance="outline">
+              <textarea
+                matInput
+                required
+                formControlName="assetImpact"
+                placeholder="Enter findings here..."
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="example-full-width" style="text-align: end">
+          <button
+            class="btncolor saveBtn"
+            (click)="submitRCA()"
+            (click)="sharedRca()"
+            mat-raised-button
+            color="primary"
+          >
+            save
+          </button>
+        </div>
+        <hr />
+        <!-- <div class="document-part"> -->
+        <div class="table-container">
+          <app-document-table></app-document-table>
+          <!-- <table
+                style="width: 100%"
+                mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+              >
+                <ng-container matColumnDef="docName">
+                  <th mat-header-cell *matHeaderCellDef>docName.</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.docName }}
+                  </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="docId">
+                  <th mat-header-cell *matHeaderCellDef>docId</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.docId }}
+                    <button mat-icon-button>
+                      <mat-icon>open_in_new</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              </table> -->
+        </div>
+        <!-- </div> -->
+      </div>
+
+      <!-- <div style="text-align: end; padding: 1rem">
+          <button class="btncolor" (click)="submitForm()" mat-raised-button>
+            Next
+          </button>
+        </div> -->
+    </form>
+  </div>
+</div>

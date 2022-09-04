@@ -1,0 +1,122 @@
+<div class="main-body">
+  <div class="table">
+    <div class="title-assign-team">Assign Team</div>
+
+    <div class="buttons">
+      <!-- <div class="title-assign-team">Assign Team</div> -->
+      <div class="title-team-details">Team Details</div>
+
+      <div class="add-search-div">
+        <div class="add-team-member-text">
+          <div class="align-team-text">
+            <button id="align-team-text" mat-button (click)="teamOpenDialog()">
+              <mat-icon>add</mat-icon>Add Team Member
+            </button>
+          </div>
+        </div>
+        <div class="search">
+          <div class="search-icn">
+            <div class="icon">
+              <mat-icon>search</mat-icon>
+            </div>
+          </div>
+
+          <div class="search-filter">
+            <input
+              class="search-text"
+              placeholder="Search"
+              type="text"
+              matInput
+              (keyup)="applyFilter($event)"
+              #input
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-table-res">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <div class="checkbox">
+            <div class="checked-checkbox">
+              <th mat-header-cell *matHeaderCellDef></th>
+            </div>
+            <td mat-cell *matCellDef="let row"></td>
+          </div>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="unfold-more">Name<mat-icon>unfold_more</mat-icon></div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="person-pin">
+              <mat-icon>person_pin</mat-icon>{{ element.member_name }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.member_email }}</td>
+        </ng-container>
+
+        <!-- Role Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="unfold-more">Role<mat-icon>unfold_more</mat-icon></div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-chip class="box">
+              <div class="chip">{{ element.member_role }}</div>
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <!-- Edit Column -->
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <div class="more-horiz">
+            <td mat-cell *matCellDef="let element">
+              <!-- <mat-icon>more_horiz</mat-icon> -->
+
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+
+              <mat-menu #menu="matMenu">
+                <div class="space">
+                  <button (click)="teamUpdateOpenDialog(element)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+
+                  <button (click)="deleteTeam(element)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </mat-menu>
+            </td>
+          </div>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="selection.toggle(row)"
+        ></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

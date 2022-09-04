@@ -1,0 +1,110 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$teal-palette,A400,A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ )
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.all-component-themes($my-theme);
+
+
+html, body { height: 100%; }
+body { margin: 0; 
+    font-family: "Roboto", "Noto Sans", sans-serif; 
+}
+// .mat-stepper-horizontal-line {
+//     min-width: 0px !important;
+// }
+//  .mat-step-label {
+//     color: white !important;
+// }
+// .mat-step-icon-selected{
+//  background-color: #02A783 !important;
+// }
+// .mat-step-icon-state-done{
+//  background-color: #02A783 !important;   
+// }
+// .mat-step-icon-state-edit {
+//     background-color: #02A783 !important;
+// }
+// .mat-progress-bar{
+//     color:#02A783 !important;
+//     background-color: #02A783 !important;
+// }
+// .mat-progress-bar.mat-progress-bar.progress-bar.mat-primary{
+//     color:#02A783 !important;
+    
+    
+
+// }
+// .mat-primary{
+//     color:#02A783 !important;
+// }
+.sub-frame::-webkit-scrollbar{
+    width: 0.15rem;
+}
+// .sub-frame::-webkit-scrollbar-track{
+//     background: #0f201c;
+// }
+.sub-frame::-webkit-scrollbar-thumb{
+    background: #9cebda;
+   
+}
+// .mat-checkbox-frame{
+//     border-color:#414141 !important;
+//  }
+.mat-dialog-container{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1A2321 !important;
+    border: white 1px solid;
+    border-radius: 5px;
+    min-width: 35vw;
+    min-height: 100px;
+    // height: 200px !important;
+}
+
+.snackbar-background {
+    background:  linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1A2321;
+    border: 1px solid #FFFFFF;
+     
+ }
+ .mat-simple-snackbar-action > button { color: red !important } 
+
+
+ ::placeholder { 
+    color: rgb(151, 151, 151) !important;
+    opacity: 1; 
+    font-style: italic;
+  }
+
+  ::-webkit-input-placeholder{
+    font-style: italic;
+  }
+
+  :-moz-placeholder{
+    font-style: italic;
+  }
+
+  ::-moz-placeholder{
+    font-style: italic;
+  }
+
+  :-ms-input-placeholder{
+    font-style: italic;
+  }
+
+
+
+

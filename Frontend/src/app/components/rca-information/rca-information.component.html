@@ -1,0 +1,59 @@
+<div class="navbar"></div>
+<div class="container">
+  <div class="sidenav"></div>
+  <div class="group">
+    <div class="section-A">
+      <div class="heading">
+        <input
+          autofocus
+          class="RcaName"
+          (focusout)="focusOutFunction($event)"
+          type="text"
+          *ngIf="some"
+          [(ngModel)]="rcaName"
+        />
+        <p class="printRcaName" *ngIf="show">{{ rcaName }}</p>
+      </div>
+      <div class="RcaReports">
+        <button class="btn" id="btn1" (click)="send()">Create RCA</button>
+      </div>
+    </div>
+    <div class="section-B">
+      <div id="rcaid" class="boxes">
+        RCA ID
+        <div class="boxes-values">{{ rcaID | slice: 0:6 }}</div>
+      </div>
+      <div
+        [ngClass]="{ underline: 'underLine == \'true\'' }"
+        id="caseid"
+        class="boxes"
+      >
+        Case ID
+        <div class="boxes-values">{{ caseId }}</div>
+      </div>
+      <div id="source" class="boxes">
+        <div class="title">Source</div>
+        <div class="boxes-values">{{ source }}</div>
+      </div>
+      <div id="time" class="boxes">
+        <div class="title">Time</div>
+        <div *ngIf="!flushDate" class="boxes-values">
+          {{ time | date: "mediumTime" }} - {{ time | date: "dd/MM/yyyy" }}
+        </div>
+
+        <div *ngIf="flushDate" class="boxes-values">-</div>
+      </div>
+      <div id="owner" class="boxes">
+        Owner
+        <div class="boxes-values">{{ owner }}</div>
+      </div>
+      <div id="status" class="boxes">
+        Status
+        <div class="boxes-values">{{ status }}</div>
+      </div>
+    </div>
+    <!-- <div>
+                <button (click)="show = true; some=false">Next</button>
+            </div> -->
+  </div>
+</div>

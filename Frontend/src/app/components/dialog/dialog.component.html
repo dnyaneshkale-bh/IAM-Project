@@ -1,0 +1,267 @@
+<form [formGroup]="saveFormGroup">
+  <div class="grid-container">
+    <div class="grid-item grid-item-h1">
+      <div class="headLabel">
+        <mat-label *ngIf="team">Team Details</mat-label>
+        <mat-label *ngIf="asset">Asset Details</mat-label>
+        <mat-label *ngIf="uTeam">Team Details</mat-label>
+        <mat-label *ngIf="uAsset">Asset Details</mat-label>
+        <mat-label *ngIf="deleteAsset">Delete Asset </mat-label>
+        <mat-label *ngIf="deleteTeam">Delete Team </mat-label>
+      </div>
+      <div class="close1">
+        <mat-icon onclick="close()" mat-dialog-close="onclick()"
+          >close</mat-icon
+        >
+      </div>
+    </div>
+    <div class="grid-item grid-item-h2">
+      <div class="icon">
+        <mat-icon onclick="close()" mat-dialog-close="onclick()" class="close2"
+          >close</mat-icon
+        >
+      </div>
+    </div>
+    <div class="grid-item grid-item-d1">
+      <div class="del">
+        <mat-label *ngIf="deleteAsset">delete Asset?</mat-label>
+        <mat-label *ngIf="deleteTeam">delete TeamMember?</mat-label>
+      </div>
+    </div>
+    <div class="grid-item grid-item-d2"></div>
+
+    <div class="grid-item grid-item-1">
+      <div class="plant1">
+        <mat-label *ngIf="team || uTeam">Name</mat-label>
+        <mat-label *ngIf="asset || uAsset">Plant</mat-label>
+      </div>
+      <div class="inputp">
+        <input
+          *ngIf="team || uTeam"
+          type="text"
+          formControlName="memberName"
+          matInput
+          autocomplete="nope"
+          class="input"
+        />
+        <input
+          *ngIf="asset || uAsset"
+          type="text"
+          formControlName="plant"
+          matInput
+          autocomplete="nope"
+          class="input"
+        />
+      </div>
+    </div>
+
+    <div class="grid-item grid-item-2">
+      <div class="grid-item-22">
+        <div class="plant2">
+          <mat-label *ngIf="team || uTeam">Email</mat-label>
+          <mat-label *ngIf="asset || uAsset">Process Area</mat-label>
+        </div>
+        <div class="inputp">
+          <input
+            *ngIf="team || uTeam"
+            type="text"
+            formControlName="memberEmail"
+            matInput
+            autocomplete="nope"
+            class="input"
+          />
+          <input
+            *ngIf="asset || uAsset"
+            type="text"
+            formControlName="processArea"
+            autocomplete="nope"
+            matInput
+            class="input"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-item grid-item-3">
+      <div class="plant3">
+        <mat-label *ngIf="team || uTeam">Role</mat-label>
+        <mat-label *ngIf="asset || uAsset">Asset</mat-label>
+      </div>
+      <div class="inputp">
+        <input
+          *ngIf="team"
+          type="text"
+          formControlName="memberRole"
+          matInput
+          autocomplete="nope"
+          class="input"
+        />
+        <input
+          *ngIf="uTeam"
+          type="text"
+          formControlName="memberRole"
+          matInput
+          autocomplete="nope"
+          class="input"
+        />
+        <input
+          *ngIf="asset"
+          type="text"
+          formControlName="asset"
+          matInput
+          autocomplete="nope"
+          class="input"
+        />
+        <input
+          *ngIf="uAsset"
+          type="text"
+          formControlName="asset"
+          matInput
+          autocomplete="nope"
+          class="input"
+          readonly="readonly"
+        />
+      </div>
+    </div>
+
+    <div class="grid-item grid-item-4"></div>
+
+    <div class="grid-item grid-item-5">
+      <span class="cbutton">
+        <button
+          type="submit"
+          mat-dialog-close
+          class="btn btn-primary cancel"
+          (click)="erase()"
+        >
+          cancel
+        </button>
+      </span>
+    </div>
+
+    <div class="grid-item grid-item-6">
+      <span class="sbutton">
+        <button
+          *ngIf="team"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="saveDetailsTeam()"
+        >
+          submit
+        </button>
+        <button
+          *ngIf="asset"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="saveDetailsAsset()"
+        >
+          submit
+        </button>
+        <button
+          *ngIf="uTeam"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="updateDetailsTeam()"
+        >
+          update
+        </button>
+        <button
+          *ngIf="uAsset"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="updateDetailsAsset()"
+        >
+          update
+        </button>
+        <button
+          *ngIf="deleteAsset"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="deleteAssetm()"
+        >
+          delete
+        </button>
+        <button
+          *ngIf="deleteTeam"
+          type="submit"
+          class="btn btn-primary submitbut"
+          mat-dialog-close
+          (click)="deleteTeamm()"
+        >
+          delete
+        </button>
+      </span>
+    </div>
+
+    <div class="mbutton grid-item grid-item-7">
+      <button
+        type="submit"
+        class="btn btn-primary cancelbutton"
+        mat-dialog-close
+        (click)="erase()"
+      >
+        cancel
+      </button>
+      <button
+        *ngIf="team"
+        type="submit"
+        class="btn btn-primary submitbutton"
+        mat-dialog-close
+        (click)="saveDetailsTeam()"
+      >
+        submit
+      </button>
+      <button
+        *ngIf="asset"
+        type="submit"
+        class="btn btn-primary submitbutton"
+        mat-dialog-close
+        (click)="saveDetailsAsset()"
+      >
+        submit
+      </button>
+      <button
+        *ngIf="uTeam"
+        type="submit"
+        class="btn btn-primary submitbutton"
+        mat-dialog-close
+        (click)="updateDetailsTeam()"
+      >
+        update
+      </button>
+      <button
+        *ngIf="uAsset"
+        type="submit"
+        class="btn btn-primary submitbutton"
+        mat-dialog-close
+        (click)="updateDetailsAsset()"
+      >
+        update
+      </button>
+
+      <button
+        *ngIf="deleteAsset"
+        type="submit"
+        class="btn btn-primary submitbut submitbut2"
+        mat-dialog-close
+        (click)="deleteAssetm()"
+      >
+        delete
+      </button>
+      <button
+        *ngIf="deleteTeam"
+        type="submit"
+        class="btn btn-primary submitbut submitbut2"
+        mat-dialog-close
+        (click)="deleteTeamm()"
+      >
+        delete
+      </button>
+    </div>
+  </div>
+</form>

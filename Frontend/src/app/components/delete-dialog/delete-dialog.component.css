@@ -1,0 +1,8 @@
+*{
+    color:#FFFFFF;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1A2321;
+    border-radius: 15%;
+}
+button:hover{
+    border: #FFFFFF 1px solid;
+}

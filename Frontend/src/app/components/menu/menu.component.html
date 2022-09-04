@@ -1,0 +1,73 @@
+<div class="menu">
+  <div class="container">
+    <div class="rca-text">RCAs ({{ cards.length }})</div>
+    <div class="container-second">
+      <div class="search-btn">
+        <div class="content">
+          <div class="content-icon">
+            <img src="assets/img/search.png" alt="" />
+          </div>
+          <input
+            matInput
+            type="text"
+            placeholder="Search"
+            class="content-text"
+            [(ngModel)]="filteredString"
+          />
+        </div>
+      </div>
+      <div class="filter">
+        <div class="filter-icon">
+          <!-- <img src="assets/img/filter.png" class="filter-img" alt="" /> -->
+          <mat-icon>filter_list</mat-icon>
+        </div>
+      </div>
+      <div class="rectangle"></div>
+    </div>
+
+    <div class="risk-filter-pills">
+      <div
+        [ngClass]="bool ? 'risk-filter-pills-open' : 'risk-filter-pills-open1'"
+      >
+        <button class="risk-filter-pills-open-text" (click)="setBool()">
+          Open
+        </button>
+      </div>
+      <div
+        [class.risk-filter-pills-closed]="bool"
+        [class.risk-filter-pills-closed1]="!bool"
+      >
+        <button class="risk-filter-pills-closed-text" (click)="unsetBool()">
+          Closed
+        </button>
+      </div>
+    </div>
+
+    <div class="frame">
+      <div class="card-layout">
+        <div class="sub-frame">
+          <div
+            *ngFor="let card of cards | filter: filteredString:bool:countCards"
+          >
+            <!-- <div *ngFor="let card of cards"> -->
+            <app-card-rca class="custom" [hero]="card"> </app-card-rca>
+            <div class="bottom"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="flyout-menu">
+      <div class="slider">
+            <div class="slider-icon">
+                <img src="assets/img/slider" alt="">
+            </div>
+        <div class="union">
+            <div class="rectangle2">
+                <div class="rectangle3"></div>
+            </div>
+        </div> 
+      </div> 
+    </div>  -->
+</div>
